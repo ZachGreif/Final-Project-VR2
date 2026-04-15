@@ -1,5 +1,3 @@
-using System.Timers;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -77,8 +75,11 @@ public class AgentFollowPlayer : MonoBehaviour
 
     void chasePlayer()
     {
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(player.position, out hit, 2f, NavMesh.AllAreas))
-                agent.SetDestination(player.position);
+        if (player == null || agent == null)
+            return;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(player.position, out hit, 2f, NavMesh.AllAreas))
+            agent.SetDestination(player.position);
     }
 }
