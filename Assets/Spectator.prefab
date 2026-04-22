@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4207156449378682508}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.496, z: 0}
+  m_LocalPosition: {x: 0, y: 1.488, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -228,6 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4565699807352727600}
+  - component: {fileID: 8477750570848363195}
   m_Layer: 0
   m_Name: Spectator
   m_TagString: Untagged
@@ -251,3 +252,38 @@ Transform:
   - {fileID: 5713925021540242681}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8477750570848363195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7433816635064320790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67b0a4e5e0aea64891914d948059c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyRenderer: {fileID: 4243334815386925489}
+  headRenderer: {fileID: 2677483075806580880}
+  bobHeight: 0.08
+  bobSpeed: 2
+  swayAngle: 5
+  minScale: 0.9
+  maxScale: 1.1
+  bodyColors:
+  - {r: 0.36862746, g: 0.29411766, b: 0.23529412, a: 0}
+  - {r: 0.54901963, g: 0.41568628, b: 0.2627451, a: 0}
+  - {r: 0.7058824, g: 0.6039216, b: 0.45490196, a: 0}
+  - {r: 0.49803922, g: 0.45882353, b: 0.40784314, a: 0}
+  - {r: 0.30980393, g: 0.3529412, b: 0.2901961, a: 0}
+  - {r: 0.43137255, g: 0.48235294, b: 0.36078432, a: 0}
+  - {r: 0.47843137, g: 0.36078432, b: 0.27450982, a: 0}
+  - {r: 0.37254903, g: 0.41960785, b: 0.45490196, a: 0}
+  - {r: 0.42352942, g: 0.35686275, b: 0.41960785, a: 0}
+  headColors:
+  - {r: 0.9490196, g: 0.8235294, b: 0.7137255, a: 0}
+  - {r: 0.8509804, g: 0.654902, b: 0.47843137, a: 0}
+  - {r: 0.7254902, g: 0.4862745, b: 0.32941177, a: 0}
+  - {r: 0.5411765, g: 0.3529412, b: 0.23137255, a: 0}
+  - {r: 0.41568628, g: 0.25882354, b: 0.1764706, a: 0}
