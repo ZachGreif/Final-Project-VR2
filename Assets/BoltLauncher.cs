@@ -56,5 +56,8 @@ public class BoltLauncher : MonoBehaviour
         // 3. Send the object forward at the chosen speed
         // Note: transform.forward pushes the object in the direction its local Z-axis (the blue arrow) is pointing
         rb.linearVelocity = transform.forward * launchSpeed;
+
+        // 4. Detach the Glad Bolt from its parent (the Glad Crossbow)
+        transform.SetParent(null);
     }
 }

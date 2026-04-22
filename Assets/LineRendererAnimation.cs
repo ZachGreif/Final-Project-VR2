@@ -17,6 +17,11 @@ public class LineRendererAnimator : MonoBehaviour
 
     public bool play = false;
 
+    public BoltLauncher boltLauncher;
+
+    private Vector3 boltSpawnPosition;Vector3 boltSpawnRotation;
+
+
     private void Awake()
     {
         // Grab the Line Renderer attached to this GameObject
@@ -27,6 +32,12 @@ public class LineRendererAnimator : MonoBehaviour
         {
             lineRenderer.positionCount = 2;
         }
+
+        if (boltLauncher != null)
+        {
+            boltSpawnPosition = new Vector3(0,2.81f,6.23f);
+            boltSpawnRotation = boltLauncher.transform.localEulerAngles;
+        }   
     }
 
     private void Update()
@@ -77,5 +88,12 @@ public class LineRendererAnimator : MonoBehaviour
         // 2. Snap back to Z = 12
         pointPos.z = startZ;
         lineRenderer.SetPosition(targetIndex, pointPos);
+        if (boltLauncher != null)
+        {
+            boltLauncher.Launch();
+            GameObject bolt = Instantiate(boltLauncher.gameObject, boltSpawnPosition, Quaternion.Euler(boltSpawnRotation), this.gameObject.transform);
+            bolt.transform.localPosition = boltSpawnPosition; ;
+            boltLauncher = bolt.GetComponent<BoltLauncher>();
+        }
     }
 }
