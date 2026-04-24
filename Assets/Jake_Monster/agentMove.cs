@@ -3,8 +3,9 @@ using UnityEngine.AI;
 
 public class AgentFollowPlayer : MonoBehaviour
 {
-    public Transform player;  // Drag your player GameObject here
+    public Transform player;
     private NavMeshAgent agent;
+    private Animator anim;
 
     [Header("Wandering Settings")]
     public float wanderRadius = 10f;
@@ -12,21 +13,24 @@ public class AgentFollowPlayer : MonoBehaviour
     private float wanderTimer;
     public bool wander;
 
-
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
         wander = true;
         wanderTimer = 0;
     }
 
     void Update()
     {
-
         if (!wander)
             chasePlayer();
         else
             WanderAround();
+
+        // Drive movement animation
+        if (anim != null)
+            anim.SetFloat("Speed", agent.velocity.magnitude);
     }
     void WanderAround()
     {

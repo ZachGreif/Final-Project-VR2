@@ -5,23 +5,21 @@ public class FollowPlayer : MonoBehaviour
 {
     public float stoppingDistance = 2f;
     public float followRange = 10f;
-    public Transform player;          // Assign the player in Inspector
+    public Transform player;
     private NavMeshAgent agent;
+    private Animator anim;
 
-    public float updateRate = 0.2f;   // How often to update destination
-
+    public float updateRate = 0.2f;
     private float timer;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = stoppingDistance;
-
+        anim = GetComponentInChildren<Animator>();
 
         if (player == null)
-        {
             Debug.LogError("Player not assigned!");
-        }
     }
 
     void Update()
@@ -30,12 +28,14 @@ public class FollowPlayer : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        // Update destination at intervals for performance
         if (timer >= updateRate)
         {
             agent.SetDestination(player.position);
             timer = 0f;
         }
 
+        // Drive walk/idle animation based on agent speed
+        if (anim != null)
+            anim.SetFloat("Speed", agent.velocity.magnitude);
     }
 }

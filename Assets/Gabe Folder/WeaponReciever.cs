@@ -29,12 +29,13 @@ public class WeaponHitReceiver : MonoBehaviour
     {
         if (isOnCooldown) return;
 
-        // Check for specific weapon tags
-        if (other.CompareTag("weapon1"))
+        // Check for specific weapon tags (case-insensitive comparison)
+        string tag = other.tag.ToLower();
+        if (tag == "weapon1")
             m_stat.TakeDamage(5);
-        else if (other.CompareTag("weapon2"))
+        else if (tag == "weapon2")
             m_stat.TakeDamage(10);
-        else if (other.CompareTag("weapon3"))
+        else if (tag == "weapon3")
             m_stat.TakeDamage(8);
         else
             return; // Not a weapon we care about
@@ -48,11 +49,9 @@ public class WeaponHitReceiver : MonoBehaviour
     IEnumerator DisableColliderTemporarily()
     {
         isOnCooldown = true;
-        col.enabled = false;
-
+        // Don't disable the collider — just block damage via the flag
+        // so the enemy still physically interacts with the world
         yield return new WaitForSeconds(disableTime);
-
-        col.enabled = true;
         isOnCooldown = false;
     }
 }
