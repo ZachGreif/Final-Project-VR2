@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3310559941092957988}
   - component: {fileID: 6256383806841905744}
   - component: {fileID: 1712476661006438224}
+  - component: {fileID: 3350126018611659029}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -110,6 +111,33 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!54 &3350126018611659029
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801549662587274710}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8985211714560532501
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,8 +210,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stoppingDistance: 2
   followRange: 10
-  player: {fileID: 0}
   updateRate: 0.2
+  follow: {fileID: 0}
 --- !u!114 &5369037071420342254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,3 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableTime: 1
+  audioSource: {fileID: 0}
+  weapon1Sounds: []
+  weapon2Sounds: []
+  weapon3Sounds: []

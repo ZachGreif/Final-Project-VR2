@@ -6,8 +6,9 @@ public class SpawnController : MonoBehaviour
     [Header("gates")]
     public GateController Gate;
     public GateController largeGate;
+
     [Header("Spawn Settings")]
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs;
     public Transform[] spawnPoints;
 
     [Header("Limits")]
@@ -30,7 +31,6 @@ public class SpawnController : MonoBehaviour
         {
             yield return new WaitForSeconds(checkInterval);
 
-            // Check if we can spawn more enemies
             if (currentEnemyCount < maxEnemies)
             {
                 SpawnEnemies();
@@ -40,17 +40,29 @@ public class SpawnController : MonoBehaviour
 
     void SpawnEnemies()
     {
+        if (enemyPrefabs == null || enemyPrefabs.Length == 0)
+        {
+            Debug.LogWarning("No enemy prefabs assigned!");
+            return;
+        }
+
+        if (spawnPoints == null || spawnPoints.Length == 0)
+        {
+            Debug.LogWarning("No spawn points assigned!");
+            return;
+        }
+
         int spawnAmount = Mathf.Min(spawnBatchSize, maxEnemies - currentEnemyCount);
 
         for (int i = 0; i < spawnAmount; i++)
         {
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            GameObject prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
-            GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            GameObject enemy = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
 
             currentEnemyCount++;
 
-            // Hook into enemy death so we can track removal
             EnemyTracker tracker = enemy.AddComponent<EnemyTracker>();
             tracker.SetSpawner(this);
         }
