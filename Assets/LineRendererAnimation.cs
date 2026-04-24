@@ -19,7 +19,8 @@ public class LineRendererAnimator : MonoBehaviour
 
     public BoltLauncher boltLauncher;
 
-    private Vector3 boltSpawnPosition;Vector3 boltSpawnRotation;
+    private Vector3 boltSpawnPosition;
+    private Vector3 boltSpawnRotation;
 
 
     private void Awake()
@@ -90,10 +91,14 @@ public class LineRendererAnimator : MonoBehaviour
         lineRenderer.SetPosition(targetIndex, pointPos);
         if (boltLauncher != null)
         {
+            // Launch the current bolt
             boltLauncher.Launch();
-            GameObject bolt = Instantiate(boltLauncher.gameObject, boltSpawnPosition, Quaternion.Euler(boltSpawnRotation), this.gameObject.transform);
-            bolt.transform.localPosition = boltSpawnPosition; ;
-            boltLauncher = bolt.GetComponent<BoltLauncher>();
+
+            // Spawn a fresh bolt for the next shot and reassign
+            GameObject newBolt = Instantiate(boltLauncher.gameObject, this.transform);
+            newBolt.transform.localPosition = boltSpawnPosition;
+            newBolt.transform.localEulerAngles = boltSpawnRotation;
+            boltLauncher = newBolt.GetComponent<BoltLauncher>();
         }
     }
 }

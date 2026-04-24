@@ -27,11 +27,14 @@ public class BoltLauncher : MonoBehaviour
         }
     }
 
+    private bool launchScheduled = false;
+
     private void Update()
     {
         // Listen for when the animation plays and trigger launch when it completes
-        if (lineRendererAnimator != null && lineRendererAnimator.play)
+        if (lineRendererAnimator != null && lineRendererAnimator.play && !launchScheduled)
         {
+            launchScheduled = true;
             // Schedule the launch to occur after the animation duration
             Invoke(nameof(Launch), lineRendererAnimator.animationDuration);
         }
@@ -59,5 +62,6 @@ public class BoltLauncher : MonoBehaviour
 
         // 4. Detach the Glad Bolt from its parent (the Glad Crossbow)
         transform.SetParent(null);
+        launchScheduled = false;
     }
 }

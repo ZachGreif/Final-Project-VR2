@@ -6,7 +6,7 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame()
     {
         // Load your main game scene by name or index
-        SceneManager.LoadScene("MainLevel");
+        SceneManager.LoadScene("Gladiator Game");
     }
 
     public void QuitGame()

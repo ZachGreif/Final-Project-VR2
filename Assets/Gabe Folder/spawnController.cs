@@ -51,7 +51,9 @@ public class SpawnController : MonoBehaviour
             currentEnemyCount++;
 
             // Hook into enemy death so we can track removal
-            EnemyTracker tracker = enemy.AddComponent<EnemyTracker>();
+            EnemyTracker tracker = enemy.GetComponent<EnemyTracker>();
+            if (tracker == null)
+                tracker = enemy.AddComponent<EnemyTracker>();
             tracker.SetSpawner(this);
         }
     }

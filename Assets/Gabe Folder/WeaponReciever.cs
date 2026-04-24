@@ -31,17 +31,18 @@ public class WeaponHitReceiver : MonoBehaviour
 
         // Check for specific weapon tags
         if (other.CompareTag("weapon1"))
-           { m_stat.TakeDamage(5); }
+            m_stat.TakeDamage(5);
         else if (other.CompareTag("weapon2"))
-            { m_stat.TakeDamage(10); }
+            m_stat.TakeDamage(10);
         else if (other.CompareTag("weapon3"))
-                { m_stat.TakeDamage(8); }
-        {
-            Debug.Log(gameObject.name + " hit by " + other.name + " with tag: " + other.tag);
+            m_stat.TakeDamage(8);
+        else
+            return; // Not a weapon we care about
 
-            // Start cooldown
-            StartCoroutine(DisableColliderTemporarily());
-        }
+        Debug.Log(gameObject.name + " hit by " + other.name + " with tag: " + other.tag);
+
+        // Start cooldown
+        StartCoroutine(DisableColliderTemporarily());
     }
 
     IEnumerator DisableColliderTemporarily()

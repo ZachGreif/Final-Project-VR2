@@ -24,9 +24,14 @@ public class Monster : MonoBehaviour
 
         if (currentHP <= 0)
         {
-           m_EnemyTracker = GetComponent<EnemyTracker>();
-            m_EnemyTracker.Die();
-
+            m_EnemyTracker = GetComponent<EnemyTracker>();
+            if (m_EnemyTracker != null)
+                m_EnemyTracker.Die();
+            else
+            {
+                Debug.LogError(gameObject.name + " has no EnemyTracker — destroying directly.");
+                Destroy(gameObject);
+            }
         }
     }
 
