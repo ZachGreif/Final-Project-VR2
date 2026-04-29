@@ -42,10 +42,11 @@ GameObject:
   - component: {fileID: 1833033032301441751}
   - component: {fileID: 7907019052472578727}
   - component: {fileID: 4454136785180294282}
+  - component: {fileID: 8193851462908766663}
   - component: {fileID: 7307325239865313062}
   m_Layer: 0
   m_Name: Weapon1
-  m_TagString: Untagged
+  m_TagString: Weapon1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +115,23 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
+--- !u!114 &8193851462908766663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149539127513470408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1acc8dc2a1c244f8c22f19045b6b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumSwingSpeed: 0.75
+  bonusForce: 1
+  hitCooldown: 0.2
+  useLocalSpaceTracking: 0
 --- !u!114 &7307325239865313062
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -232,8 +232,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disableTime: 1
   audioSource: {fileID: 0}
-  weapon1Sounds: []
-  weapon2Sounds: []
+  weapon1Sounds:
+  - {fileID: 8300000, guid: b4d4d734af81e4e4dbb3b45c0d0ed30a, type: 3}
+  - {fileID: 8300000, guid: 4a600131285c97945b464f28c8066b7b, type: 3}
+  - {fileID: 8300000, guid: c8c4ce4e7768603458bfc5fd21e793e5, type: 3}
+  - {fileID: 8300000, guid: 6f43a40c69daf9f44872ae5c435ce6f4, type: 3}
+  weapon2Sounds:
+  - {fileID: 8300000, guid: 3743c61f9f255d5428d685153b3a9105, type: 3}
+  - {fileID: 8300000, guid: 3743c61f9f255d5428d685153b3a9105, type: 3}
   weapon3Sounds: []
 --- !u!114 &6400761797735844617
 MonoBehaviour:
